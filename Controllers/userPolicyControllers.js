@@ -50,15 +50,14 @@ exports.searchData = async (req, res) => {
 
 
 exports.aggregateData = async (req, res) => {
-    const {username} = req.body;
     try{
         const data = await userPolicy.aggregate([
-            {$match: {firstname: username}},
-            {$group: {}},
+            {$group: { _id: "$firstname", NumberOfPolicy: { $sum: 1}}}
         ]);
-        res.status(201).json(data);
+        res.status(200).json(data);
 
     }catch(err){
+        console.log(err)
         res.status(400).send(err);
     }
 }
