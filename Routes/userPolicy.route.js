@@ -8,7 +8,7 @@ router.post('/', userPolicyController.addData);
 router.get('/', userPolicyController.searchData);
 
 //API to provide aggregated policy by each user.
-router.get('/', userPolicyController.aggregateData)
+router.get('/aggregate', userPolicyController.aggregateData)
 
 
 
